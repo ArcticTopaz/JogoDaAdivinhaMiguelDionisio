@@ -39,23 +39,36 @@ function Jogo(numero) {
 		Init(); //Reinicia o jogo
 	}
 	
-    else if(numero==numSecreto) {
-        tentativas++;
-        document.JogoDaAdivinha.Output.value='Acertaste em ' + tentativas + ' tentativas! Era o numero ' + numSecreto + '! Clica em Recomeçar para jogar outra vez';
-        document.JogoDaAdivinha.HighLow.value='Certoooooooooo!'; 
-	}
+    else 
+		if (isNaN (numero)) {
+			alert ("Só são autorizados números!")
+			vidas++;
+			}
+			else {
+			if(numero==numSecreto) {
+			tentativas++;
+			document.JogoDaAdivinha.Output.value='Acertaste em ' + tentativas + ' tentativas! Era o numero ' + numSecreto + '! Clica em Recomeçar para jogar outra vez';
+			document.JogoDaAdivinha.HighLow.value='Certoooooooooo!'; 
+		}
 	
-	else {
-		tentativas++;
-		document.JogoDaAdivinha.Output.value='Não, ' + numero + ' não é o numero em que estou a pensar!';
-		document.JogoDaAdivinha.HighLow.value=(numSecreto > numero) ? 'mais alto!' : 'mais baixo!';
-		document.JogoDaAdivinha.Tries.value=tentativas;			 
+		else {
+			tentativas++;
+			document.JogoDaAdivinha.Output.value='Não, ' + numero + ' não é o numero em que estou a pensar!';
+			document.JogoDaAdivinha.HighLow.value=(numSecreto > numero) ? 'mais alto!' : 'mais baixo!';
+			document.JogoDaAdivinha.Tries.value=tentativas;			 
+		}
 	}
 }
  
  // Função que pergunta ao jogador qual o número máximo com que pretende jogar
 function pedirNumMax() {
 	 var num = parseInt(prompt("Escreve o número máximo"));
+	 if (isNaN (num)) { 
+		alert ("Só são permitidos números");
+		 pedirNumMax ();
+		 }
+		 else {
 	 console.log("numMax: " + num);
 	 limite = num;
+	 }
 }
