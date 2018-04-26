@@ -64,7 +64,7 @@ function Jogo(numero) {
 function pedirNumMax() {
 	 var num = parseInt(prompt("Escreve o número máximo"));
 	 if (isNaN (num)) { 
-		alert ("Só são permitidos números");
+		alert ("Só são permitidos números!");
 		 pedirNumMax ();
 		 }
 		 else {
